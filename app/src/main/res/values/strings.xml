@@ -2,4 +2,8 @@
     <string name="app_name">ToDoApplication</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="invite_sigup">
+        <font color = "#FF000000"> Don\'t have a account?</font>
+        <font color = "#2196F3"> Sign up</font>
+    </string>
 </resources>
