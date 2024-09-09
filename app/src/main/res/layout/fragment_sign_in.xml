@@ -56,7 +56,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/border_edittext"
         android:fontFamily="@font/font"
-        android:hint="Your mail"
+        android:hint="Your email"
         android:padding="12dp"
         android:textSize="17sp"
         app:layout_constraintTop_toBottomOf="@id/email_tv" />
@@ -136,7 +136,7 @@
         android:layout_marginHorizontal="30dp"
         android:background="@null"
         android:fontFamily="@font/font"
-        android:text="@string/invite_sigup"
+        android:text="@string/invite_signup"
         android:textColor="@color/blue"
         android:textSize="15sp"
         android:textStyle="bold"
