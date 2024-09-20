@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.example.todoapplication.database.categories.CategoryDAO
 import com.example.todoapplication.database.tasks.TaskDAO
 import com.example.todoapplication.database.users.UserDAO
@@ -17,7 +18,7 @@ import com.example.todoapplication.model.User
         Task::class,
         Category::class], version = 1
 )
-
+@TypeConverters(Converters::class)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun getUserDao() : UserDAO
     abstract fun getTaskDao() : TaskDAO
@@ -34,7 +35,7 @@ abstract class AppDatabase: RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     database_name
-                ).fallbackToDestructiveMigration().build()
+                ).build()
                 INSTANCE = instance
                 instance
             }
