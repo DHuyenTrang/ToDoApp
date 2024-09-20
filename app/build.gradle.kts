@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("com.google.devtools.ksp") version "1.9.25-1.0.20"
+    id("com.google.devtools.ksp")
     id("androidx.navigation.safeargs")
 }
 
@@ -64,6 +64,8 @@ dependencies {
     // using Room
     implementation (libs.androidx.room.runtime)
     annotationProcessor (libs.androidx.room.compiler)
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:2.6.1")
     // For Kotlin projects
     ksp(libs.androidx.room.compiler)
 }
