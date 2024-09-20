@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignInFragment">
+    tools:context=".login.SignInFragment">
 
     <TextView
         android:id="@+id/title"
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/border_edittext"
+        android:background="@drawable/bg_edit_text"
         android:fontFamily="@font/font"
         android:hint="Your email"
         android:padding="12dp"
@@ -87,7 +87,7 @@
             android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/border_edittext"
+            android:background="@drawable/bg_edit_text"
             android:ems="15"
             android:fontFamily="@font/font"
             android:hint="Password"
@@ -118,7 +118,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:background="@drawable/format_button"
+        android:background="@drawable/bg_button"
         android:fontFamily="@font/font"
         android:text="Login"
         android:textColor="@color/white"

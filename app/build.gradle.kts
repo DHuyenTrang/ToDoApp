@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.devtools.ksp") version "1.9.25-1.0.20"
+    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -33,6 +35,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -42,9 +47,23 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    //using navigation
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    // using ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    // using LiveData
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    // using RecyclerView
+    implementation(libs.recyclerview)
+    // For control over item selection of both touch and mouse driven selection
+    implementation(libs.recyclerview.selection)
+    // using Room
+    implementation (libs.androidx.room.runtime)
+    annotationProcessor (libs.androidx.room.compiler)
+    // For Kotlin projects
+    ksp(libs.androidx.room.compiler)
 }
