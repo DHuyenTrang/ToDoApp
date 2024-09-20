@@ -32,7 +32,14 @@ class SignUpFragment : Fragment() {
 
         // click Sign Up
         binding.buttonSignUp.setOnClickListener {
-
+            checkInput()
         }
+    }
+
+    fun checkInput(): Boolean {
+        if(binding.inputUsername.text == null) {
+            binding.inputUsername.error = "Invalid Username"
+        }
+        return true;
     }
 }

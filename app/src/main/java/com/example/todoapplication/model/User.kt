@@ -1,4 +1,4 @@
-package com.example.todoapplication.database.users
+package com.example.todoapplication.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
