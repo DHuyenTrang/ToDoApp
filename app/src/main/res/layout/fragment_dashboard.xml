@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
-    tools:context=".DashboardFragment">
+    android:background="#ffffff"
+    tools:context=".ui.DashboardFragment">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
@@ -18,6 +18,42 @@
         android:layout_marginBottom="20dp"
         app:itemIconTint="@drawable/item_menu_selector"
         app:labelVisibilityMode="unlabeled"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_task_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue"
+        android:src="@drawable/plus_icon"
+        app:maxImageSize="30sp"
+        app:tint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_menu"
+        android:layout_margin="25dp"
+        />
+    <EditText
+        android:id="@+id/search_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/bg_search_view"
+        android:hint="   Search for Tasks, Events"
+        app:layout_constraintTop_toTopOf="parent"
+        android:drawableStart="@drawable/search_icon"
+        android:layout_marginTop="20dp"
+        android:padding="15dp"
+        android:textSize="15sp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Categories"
+        android:fontFamily="@font/font"
+        app:layout_constraintTop_toBottomOf="@id/search_input"
+        android:textSize="20sp"
+        android:layout_margin="20dp"
+        android:textColor="@color/black"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
