@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/home_button"
+        android:id="@+id/button_home"
         android:icon="@drawable/home_icon"
         android:title="Home" />
     <item
-        android:id="@+id/calendar_button"
+        android:id="@+id/button_calendar"
         android:icon="@drawable/calendar_icon"
         android:title="Calendar" />
     <item
-        android:id="@+id/alltask_button"
+        android:id="@+id/button_alltask"
         android:icon="@drawable/docs_icon"
         android:title="All Task" />
     <item
-        android:id="@+id/setting_button"
+        android:id="@+id/button_setting"
         android:icon="@drawable/setting_icon"
         android:title="Setting" />
 

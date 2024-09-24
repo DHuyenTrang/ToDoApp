@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_signInFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -21,32 +24,32 @@
         tools:layout="@layout/fragment_sign_up" />
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.example.todoapplication.AddFragment"
+        android:name="com.example.todoapplication.ui.AddFragment"
         android:label="fragment_add"
         tools:layout="@layout/fragment_add" />
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.todoapplication.DetailFragment"
+        android:name="com.example.todoapplication.ui.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" />
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.example.todoapplication.DashboardFragment"
+        android:name="com.example.todoapplication.ui.DashboardFragment"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" />
     <fragment
         android:id="@+id/calendarFragment"
-        android:name="com.example.todoapplication.CalendarFragment"
+        android:name="com.example.todoapplication.ui.CalendarFragment"
         android:label="fragment_calendar"
         tools:layout="@layout/fragment_calendar" />
     <fragment
         android:id="@+id/allTaskFragment"
-        android:name="com.example.todoapplication.AllTaskFragment"
+        android:name="com.example.todoapplication.ui.AllTaskFragment"
         android:label="fragment_all_task"
         tools:layout="@layout/fragment_all_task" />
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.example.todoapplication.SettingFragment"
+        android:name="com.example.todoapplication.ui.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" />
 </navigation>

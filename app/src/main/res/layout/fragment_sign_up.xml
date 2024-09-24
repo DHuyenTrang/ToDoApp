@@ -59,7 +59,8 @@
         android:hint="Your username"
         android:padding="12dp"
         android:textSize="17sp"
-        app:layout_constraintTop_toBottomOf="@id/user_tv" />
+        app:layout_constraintTop_toBottomOf="@id/user_tv"
+        app:errorEnabled = "true"/>
 
     <TextView
         android:id="@+id/email_tv"
@@ -86,7 +87,8 @@
         android:hint="Your email"
         android:padding="12dp"
         android:textSize="17sp"
-        app:layout_constraintTop_toBottomOf="@id/email_tv" />
+        app:layout_constraintTop_toBottomOf="@id/email_tv"
+        app:errorEnabled = "true"/>
 
     <TextView
         android:id="@+id/password_tv"
@@ -119,7 +121,8 @@
             android:fontFamily="@font/font"
             android:hint="Password"
             android:paddingStart="12dp"
-            android:textSize="17sp" />
+            android:textSize="17sp"
+            app:errorEnabled = "true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
