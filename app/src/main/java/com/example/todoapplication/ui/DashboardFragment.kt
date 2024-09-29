@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.todoapplication.R
 import com.example.todoapplication.databinding.FragmentDashboardBinding
 import com.example.todoapplication.databinding.FragmentSignInBinding
@@ -15,6 +16,7 @@ class DashboardFragment : Fragment() {
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
     private lateinit var bottomNavigationView: BottomNavigationView
+    val user_id: DashboardFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +34,10 @@ class DashboardFragment : Fragment() {
         bottomNavigationView = binding.bottomMenu
         bottomNavigationView.selectedItemId = R.id.button_home
         replaceFragment()
+
+        binding.addTaskButton.setOnClickListener{
+            findNavController().navigate(R.id.addFragment)
+        }
     }
 
     private fun replaceFragment() {

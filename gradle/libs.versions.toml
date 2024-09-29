@@ -22,6 +22,7 @@ recyclerview = "1.3.2"
 recyclerviewSelection = "1.1.0"
 recyclerviewVersion = "selection"
 roomCompiler = "2.6.1"
+roomKtx = "2.6.1"
 roomRuntime = "2.6.1"
 
 
@@ -41,6 +42,7 @@ androidx-navigation-ui = { module = "androidx.navigation:navigation-ui", version
 androidx-recyclerview = { module = "androidx.recyclerview:recyclerview" }
 androidx-recyclerview-selection = { module = "androidx.recyclerview:recyclerview-selection" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 design = { module = "com.android.support:design" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
