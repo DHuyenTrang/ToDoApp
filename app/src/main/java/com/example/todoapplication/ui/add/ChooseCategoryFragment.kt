@@ -13,13 +13,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todoapplication.R
 import com.example.todoapplication.adapter.CategoryListAdapter
-import com.example.todoapplication.databinding.FragmentAddBinding
 import com.example.todoapplication.databinding.FragmentChooseCategoryBinding
 import com.example.todoapplication.model.Category
-import com.example.todoapplication.viewmodel.CategoryViewModel
 
 class ChooseCategoryFragment : Fragment() {
     private var _binding: FragmentChooseCategoryBinding? = null
@@ -27,6 +26,7 @@ class ChooseCategoryFragment : Fragment() {
     private val viewModel: CategoryViewModel by viewModels() {
         CategoryViewModel.CategoryViewModelFactory(requireContext())
     }
+    val args: ChooseCategoryFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,7 +59,7 @@ class ChooseCategoryFragment : Fragment() {
     }
 
     private val onClick: (Int) -> Unit = { id ->
-        val action = ChooseCategoryFragmentDirections.actionChooseCategoryFragmentToAddFragment(id)
+        val action = ChooseCategoryFragmentDirections.actionChooseCategoryFragmentToAddFragment(id, args.userId)
         findNavController().navigate(action)
     }
 

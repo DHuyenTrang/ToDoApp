@@ -1,4 +1,4 @@
-package com.example.todoapplication.viewmodel
+package com.example.todoapplication.ui.add
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.todoapplication.database.categories.CategoryRepository
-import com.example.todoapplication.login.UserViewModel
 import com.example.todoapplication.model.Category
 import kotlinx.coroutines.launch
 

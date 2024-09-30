@@ -1,4 +1,4 @@
-package com.example.todoapplication.ui
+package com.example.todoapplication.ui.dashboard
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,14 +9,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.todoapplication.R
 import com.example.todoapplication.databinding.FragmentDashboardBinding
-import com.example.todoapplication.databinding.FragmentSignInBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class DashboardFragment : Fragment() {
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
     private lateinit var bottomNavigationView: BottomNavigationView
-    val user_id: DashboardFragmentArgs by navArgs()
+    val args: DashboardFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +35,8 @@ class DashboardFragment : Fragment() {
         replaceFragment()
 
         binding.addTaskButton.setOnClickListener{
-            findNavController().navigate(R.id.addFragment)
+            val action = DashboardFragmentDirections.actionDashboardFragmentToAddFragment(-1, args.userId)
+            findNavController().navigate(action)
         }
     }
 

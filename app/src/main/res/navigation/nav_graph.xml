@@ -31,6 +31,13 @@
             android:name="category_id"
             app:argType="integer"
             />
+        <argument
+            android:name="user_id"
+            app:argType="integer"
+            />
+        <action
+            android:id="@+id/action_addFragment_to_chooseCategoryFragment"
+            app:destination="@id/chooseCategoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -39,12 +46,15 @@
         tools:layout="@layout/fragment_detail" />
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.example.todoapplication.ui.DashboardFragment"
+        android:name="com.example.todoapplication.ui.dashboard.DashboardFragment"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard">
         <argument
             android:name="user_id"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_addFragment"
+            app:destination="@id/addFragment" />
     </fragment>
     <fragment
         android:id="@+id/calendarFragment"
@@ -69,5 +79,9 @@
         <action
             android:id="@+id/action_chooseCategoryFragment_to_addFragment"
             app:destination="@id/addFragment" />
+        <argument
+            android:name="user_id"
+            app:argType="integer"
+            />
     </fragment>
 </navigation>
