@@ -9,7 +9,7 @@
         android:id="@+id/signInFragment"
         android:name="com.example.todoapplication.login.SignInFragment"
         android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in" >
+        tools:layout="@layout/fragment_sign_in">
         <action
             android:id="@+id/action_signInFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
@@ -24,9 +24,14 @@
         tools:layout="@layout/fragment_sign_up" />
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.example.todoapplication.ui.AddFragment"
+        android:name="com.example.todoapplication.ui.add.AddFragment"
         android:label="fragment_add"
-        tools:layout="@layout/fragment_add" />
+        tools:layout="@layout/fragment_add">
+        <argument
+            android:name="category_id"
+            app:argType="integer"
+            />
+    </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.todoapplication.ui.DetailFragment"
@@ -36,7 +41,11 @@
         android:id="@+id/dashboardFragment"
         android:name="com.example.todoapplication.ui.DashboardFragment"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard">
+        <argument
+            android:name="user_id"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/calendarFragment"
         android:name="com.example.todoapplication.ui.CalendarFragment"
@@ -52,4 +61,13 @@
         android:name="com.example.todoapplication.ui.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/chooseCategoryFragment"
+        android:name="com.example.todoapplication.ui.add.ChooseCategoryFragment"
+        android:label="fragment_choose_category"
+        tools:layout="@layout/fragment_choose_category">
+        <action
+            android:id="@+id/action_chooseCategoryFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+    </fragment>
 </navigation>

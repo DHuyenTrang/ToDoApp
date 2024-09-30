@@ -27,7 +27,6 @@ data class Task(
     @ColumnInfo var title: String,
     @ColumnInfo var description: String,
     @ColumnInfo var due_date: Date,
-    @ColumnInfo var is_allDay: Boolean,
     @ColumnInfo var status: String,
     @ColumnInfo var category_id: Int,
     @ColumnInfo var user_id: Int,

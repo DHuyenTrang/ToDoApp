@@ -49,7 +49,9 @@ class SignInFragment : Fragment() {
             for(user in listUser) {
                 if(user.email == emailInput && user.password == passwordInput) {
                     Toast.makeText(requireContext(), "Login success", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_signInFragment_to_dashboardFragment)
+
+                    val action = SignInFragmentDirections.actionSignInFragmentToDashboardFragment(user.id)
+                    findNavController().navigate(action)
                 }
             }
         })

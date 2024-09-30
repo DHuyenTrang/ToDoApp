@@ -8,52 +8,146 @@
     tools:context=".ui.DashboardFragment">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottom_menu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@drawable/bg_bottom_menu"
-        app:menu="@menu/bottom_menu"
         android:layout_marginHorizontal="10dp"
         android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_bottom_menu"
         app:itemIconTint="@drawable/item_menu_selector"
         app:labelVisibilityMode="unlabeled"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_menu" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_task_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="25dp"
         android:backgroundTint="@color/blue"
         android:src="@drawable/plus_icon"
-        app:maxImageSize="30sp"
-        app:tint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottom_menu"
-        android:layout_margin="25dp"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:maxImageSize="30sp"
+        app:tint="@color/white" />
+
     <EditText
         android:id="@+id/search_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:background="@drawable/bg_search_view"
-        android:hint="   Search for Tasks, Events"
-        app:layout_constraintTop_toTopOf="parent"
-        android:drawableStart="@drawable/search_icon"
         android:layout_marginTop="20dp"
+        android:background="@drawable/bg_search_view"
+        android:drawableStart="@drawable/search_icon"
+        android:fontFamily="@font/font"
+        android:hint="   Search for Tasks, Events"
         android:padding="15dp"
         android:textSize="15sp"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
+        android:id="@+id/categories_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Categories"
-        android:fontFamily="@font/font"
-        app:layout_constraintTop_toBottomOf="@id/search_input"
-        android:textSize="20sp"
         android:layout_margin="20dp"
+        android:fontFamily="@font/font"
+        android:text="Categories"
         android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/search_input" />
+
+    <Button
+        android:id="@+id/work_category_button"
+        style="@style/Theme.AppCompat"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/bg_button_category"
+        android:drawableTop="@drawable/work_icon"
+        android:paddingVertical="25dp"
+        android:text="Work"
+        android:textColor="#2196F3"
+        app:layout_constraintDimensionRatio="1:0.9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categories_title"
+        app:layout_constraintWidth_percent="0.27" />
+
+    <Button
+        android:id="@+id/personal_category_button"
+        style="@style/Theme.AppCompat"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/bg_button_category"
+        android:drawableTop="@drawable/personal_icon"
+        android:paddingVertical="25dp"
+        android:text="Personal"
+        android:textColor="#FF5722"
+        app:layout_constraintDimensionRatio="1:0.9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categories_title"
+        app:layout_constraintWidth_percent="0.27" />
+
+    <Button
+        android:id="@+id/shopping_category_button"
+        style="@style/Theme.AppCompat"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/bg_button_category"
+        android:drawableTop="@drawable/shopping_icon"
+        android:paddingVertical="25dp"
+        android:text="Shopping"
+        android:textColor="#FFC107"
+        app:layout_constraintDimensionRatio="1:0.9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categories_title"
+        app:layout_constraintWidth_percent="0.27" />
+
+    <Button
+        android:id="@+id/health_category_button"
+        style="@style/Theme.AppCompat"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/bg_button_category"
+        android:drawableTop="@drawable/health_icon"
+        android:paddingVertical="25dp"
+        android:text="Health"
+        android:textColor="#FF7B7B"
+        app:layout_constraintDimensionRatio="1:0.9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/work_category_button"
+        app:layout_constraintWidth_percent="0.27" />
+
+    <TextView
+        android:id="@+id/task_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:fontFamily="@font/font"
+        android:text="Today’s task"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/health_category_button" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/list_task"
+        app:layout_constraintTop_toBottomOf="@id/task_title"
+        app:layout_constraintBottom_toTopOf="@id/bottom_menu"
+        android:layout_margin="20dp"
         />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
