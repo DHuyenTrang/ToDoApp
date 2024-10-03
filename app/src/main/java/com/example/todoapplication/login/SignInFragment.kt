@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.example.todoapplication.Constant
 import com.example.todoapplication.R
 import com.example.todoapplication.databinding.FragmentSignInBinding
 import com.example.todoapplication.model.User
@@ -50,8 +51,8 @@ class SignInFragment : Fragment() {
                 if(user.email == emailInput && user.password == passwordInput) {
                     Toast.makeText(requireContext(), "Login success", Toast.LENGTH_SHORT).show()
 
-                    val action = SignInFragmentDirections.actionSignInFragmentToDashboardFragment(user.id)
-                    findNavController().navigate(action)
+                    findNavController().navigate(R.id.dashboardFragment)
+                    Constant.user_id = user.id
                 }
             }
         })

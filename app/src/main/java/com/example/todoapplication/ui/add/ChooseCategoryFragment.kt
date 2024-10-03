@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.todoapplication.Constant
 import com.example.todoapplication.R
 import com.example.todoapplication.adapter.CategoryListAdapter
 import com.example.todoapplication.databinding.FragmentChooseCategoryBinding
@@ -26,7 +27,6 @@ class ChooseCategoryFragment : Fragment() {
     private val viewModel: CategoryViewModel by viewModels() {
         CategoryViewModel.CategoryViewModelFactory(requireContext())
     }
-    val args: ChooseCategoryFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,8 +59,8 @@ class ChooseCategoryFragment : Fragment() {
     }
 
     private val onClick: (Int) -> Unit = { id ->
-        val action = ChooseCategoryFragmentDirections.actionChooseCategoryFragmentToAddFragment(id, args.userId)
-        findNavController().navigate(action)
+        Constant.category_id = id
+        findNavController().popBackStack()
     }
 
     fun openCreateDialog() {
