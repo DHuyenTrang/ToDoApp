@@ -18,17 +18,19 @@
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <EditText
         android:id="@+id/title_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:background="@drawable/bg_search_view"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_text_view"
         android:fontFamily="@font/font"
         android:hint="Title"
-        android:textSize="17sp"
         android:paddingHorizontal="15dp"
         android:paddingVertical="10dp"
+        android:textSize="17sp"
         app:layout_constraintTop_toBottomOf="@id/title" />
 
     <TextView
@@ -49,11 +51,13 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginHorizontal="20dp"
-        android:background="@drawable/bg_search_view"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_text_view"
         android:fontFamily="@font/font"
         android:gravity="center_vertical|left"
         android:paddingHorizontal="15dp"
         android:text="Choose category"
+        android:textColor="#6b6e71"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_percent="0.07"
@@ -81,8 +85,9 @@
         android:background="@drawable/bg_date_picker"
         android:drawableStart="@drawable/calendar_icon"
         android:fontFamily="@font/font"
-        android:paddingHorizontal="10dp"
+        android:paddingHorizontal="20dp"
         android:text="   Set due date"
+        android:textColor="#6b6e71"
         android:textAlignment="viewStart"
         android:textSize="17sp"
         app:layout_constraintTop_toBottomOf="@id/date" />
@@ -97,8 +102,9 @@
         android:background="@drawable/bg_date_picker"
         android:drawableStart="@drawable/clock_icon"
         android:fontFamily="@font/font"
-        android:paddingHorizontal="10dp"
+        android:paddingHorizontal="20dp"
         android:text="   Set Time"
+        android:textColor="#6b6e71"
         android:textAlignment="viewStart"
         android:textSize="17sp"
         app:layout_constraintTop_toBottomOf="@id/date_input" />

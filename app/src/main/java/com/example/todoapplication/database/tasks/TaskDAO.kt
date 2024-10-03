@@ -8,6 +8,7 @@ import androidx.room.Query
 import androidx.room.Update
 import com.example.todoapplication.model.Category
 import com.example.todoapplication.model.Task
+import java.util.Date
 
 @Dao
 interface TaskDAO {
@@ -20,6 +21,7 @@ interface TaskDAO {
     @Update
     suspend fun updateTask(task: Task)
 
-//    @Query("SELECT * FROM tasks WHERE user_id = :userId")
-//    fun getAllTaskByUser(userId: Int): LiveData<List<Category>>
+    @Query("SELECT * FROM tasks WHERE user_id = :userId")
+    fun getAllTaskByUser(userId: Int): LiveData<List<Task>>
+
 }

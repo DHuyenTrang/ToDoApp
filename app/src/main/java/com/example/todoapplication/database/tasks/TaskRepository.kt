@@ -8,6 +8,7 @@ import androidx.room.Update
 import com.example.todoapplication.database.AppDatabase
 import com.example.todoapplication.model.Category
 import com.example.todoapplication.model.Task
+import java.util.Date
 
 class TaskRepository(context: Context) {
     private val taskDAO: TaskDAO
@@ -22,5 +23,5 @@ class TaskRepository(context: Context) {
 
     suspend fun updateTask(task: Task) = taskDAO.updateTask(task)
 
-//    fun getAllTaskByUser(userId: Int): LiveData<List<Category>> = taskDAO.getAllTaskByUser(userId)
+    fun getAllTaskByUser(userId: Int): LiveData<List<Task>> = taskDAO.getAllTaskByUser(userId)
 }

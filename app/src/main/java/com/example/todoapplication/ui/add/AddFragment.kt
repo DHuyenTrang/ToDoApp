@@ -12,23 +12,25 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
+import com.example.todoapplication.Constant
+import com.example.todoapplication.R
 import com.example.todoapplication.databinding.FragmentAddBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+import java.util.Timer
+import kotlin.time.Duration.Companion.hours
 
 class AddFragment : Fragment() {
     private var _binding: FragmentAddBinding? = null
     private val binding get() = _binding!!
+
     private val calendar = Calendar.getInstance()
-    private var year: Int = 0
-    private var month: Int = 0
-    private var day: Int = 0
+    private var date = Date()
     private var hour: Int = 0
     private var minute: Int = 0
-    val args: AddFragmentArgs by navArgs()
+
     private val categoryViewModel: CategoryViewModel by viewModels() {
         CategoryViewModel.CategoryViewModelFactory(requireContext())
     }
@@ -58,10 +60,9 @@ class AddFragment : Fragment() {
 
         binding.categoryInput.setOnClickListener { onCategoryClick() }
 
-//        println(args.categoryId)
-        val category_id = args.categoryId
-        if (category_id != -1) {
-            categoryViewModel.getCategoryById(category_id).observe(viewLifecycleOwner, Observer {
+        if (Constant.category_id != 0) {
+            val categoryId = Constant.category_id
+            categoryViewModel.getCategoryById(categoryId).observe(viewLifecycleOwner, Observer {
                 binding.categoryInput.text = it.name
             })
         }
@@ -73,56 +74,56 @@ class AddFragment : Fragment() {
     fun saveTask() {
         val title = binding.titleInput.text.toString()
         val des = binding.descriptionInput.text.toString()
-        val date = Date(year, month, day, hour, minute)
-        val category_id = args.categoryId
-        val user_id = args.userId
+        val date = this.date
+        val categoryId = Constant.category_id
+        val userId = Constant.user_id
         val status = "To Do"
-        viewModel.addTask(title, des, date, status, category_id, user_id)
+        viewModel.addTask(title, des, date, status, categoryId, userId)
 
         Toast.makeText(requireContext(), "Add new task success", Toast.LENGTH_SHORT).show()
+        findNavController().popBackStack()
     }
 
     private fun onCategoryClick() {
-        val action = AddFragmentDirections.actionAddFragmentToChooseCategoryFragment(args.userId)
-        findNavController().navigate(action)
+        findNavController().navigate(R.id.chooseCategoryFragment)
     }
 
     @SuppressLint("SetTextI18n")
     fun openDatePickerDialog() {
         val datepicker: DatePickerDialog = DatePickerDialog(
-            requireContext(), { DatePicker, year: Int, monthOfYear: Int, dayOfMonthh: Int ->
+            requireContext(), { _, year: Int, monthOfYear: Int, dayOfMonth: Int ->
                 val selectedDate = Calendar.getInstance()
-                selectedDate.set(year, monthOfYear, dayOfMonthh)
-                val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                selectedDate.set(year, monthOfYear, dayOfMonth)
+                val dateFormat = SimpleDateFormat("dd/MM/yyyy")
                 val formattDate = dateFormat.format(selectedDate.time)
-                this.year = calendar.get(Calendar.YEAR)
-                this.month = calendar.get(Calendar.MONTH)
-                this.day = calendar.get(Calendar.DAY_OF_MONTH)
+
+                this.date = selectedDate.time
+
                 binding.dateInput.text = "  $formattDate"
             },
-            year,
-            month,
-            day
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
         )
         datepicker.show()
     }
 
     @SuppressLint("SetTextI18n")
     fun openTimePickerDialog() {
-        val currentTime = Calendar.getInstance()
-        val timeFormat = SimpleDateFormat("hh:mm", Locale.getDefault())
-        this.hour = currentTime.get(Calendar.HOUR_OF_DAY)
-        this.minute = currentTime.get(Calendar.MINUTE)
-        val formattTime = timeFormat.format(currentTime.time)
-        TimePickerDialog(
-            requireContext(),
-            TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
-                binding.timeInput.text = "  $formattTime"
+        val calendar = Calendar.getInstance()
+        val hour = calendar.get(Calendar.HOUR_OF_DAY)
+        val minute = calendar.get(Calendar.MINUTE)
 
-            },
-            hour,
-            minute,
-            true
-        ).show()
+        val timePickerDialog = TimePickerDialog(requireContext(),
+            { _, selectedHour, selectedMinute ->
+                val formattedTime = String.format("  %02d:%02d", selectedHour, selectedMinute)
+
+                this.date.hours= selectedHour
+                this.date.minutes = selectedMinute
+
+                binding.timeInput.text = formattedTime
+        }, hour, minute, true)
+
+        timePickerDialog.show()
     }
 }
