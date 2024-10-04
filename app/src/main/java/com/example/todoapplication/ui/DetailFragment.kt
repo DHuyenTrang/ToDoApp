@@ -103,7 +103,11 @@ class DetailFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-
+        binding.deleteButton.setOnClickListener {
+            taskViewModel.deleteTask(currTask.value!!)
+            Toast.makeText(requireContext(), "Delete task success", Toast.LENGTH_SHORT).show()
+            findNavController().popBackStack()
+        }
     }
 
     fun openDatePickerDialog() {

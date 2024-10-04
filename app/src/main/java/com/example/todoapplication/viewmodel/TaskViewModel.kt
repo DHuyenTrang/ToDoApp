@@ -12,6 +12,10 @@ import kotlinx.coroutines.launch
 class TaskViewModel(context: Context): ViewModel() {
     private val taskRepository: TaskRepository = TaskRepository(context)
 
+    fun deleteTask(task: Task) = viewModelScope.launch {
+        taskRepository.deleteTask(task)
+    }
+
     fun getAllTaskByCategory(idCategory: Int): LiveData<List<Task>> = taskRepository.getAllTaskByCategory(idCategory)
 
     fun getAllTaskByUser(idUser: Int): LiveData<List<Task>> = taskRepository.getAllTaskByUser(idUser)
