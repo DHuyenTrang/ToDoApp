@@ -12,7 +12,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.todoapplication.Constant
 import com.example.todoapplication.R
 import com.example.todoapplication.databinding.FragmentSignInBinding
+import com.example.todoapplication.model.Task
 import com.example.todoapplication.model.User
+import com.example.todoapplication.viewmodel.TaskViewModel
+import java.util.Calendar
 
 class SignInFragment : Fragment() {
     private var _binding: FragmentSignInBinding? = null
@@ -49,10 +52,13 @@ class SignInFragment : Fragment() {
             data -> val listUser: List<User> = data ?: emptyList()
             for(user in listUser) {
                 if(user.email == emailInput && user.password == passwordInput) {
+
                     Toast.makeText(requireContext(), "Login success", Toast.LENGTH_SHORT).show()
 
-                    findNavController().navigate(R.id.dashboardFragment)
                     Constant.user_id = user.id
+                    // update status by time
+
+                    findNavController().navigate(R.id.dashboardFragment)
                 }
             }
         })

@@ -32,15 +32,20 @@
         android:id="@+id/detailFragment"
         android:name="com.example.todoapplication.ui.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="id_task"
+            app:argType="integer"
+            />
+    </fragment>
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.example.todoapplication.ui.dashboard.DashboardFragment"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard">
         <action
-            android:id="@+id/action_dashboardFragment_to_addFragment"
-            app:destination="@id/addFragment" />
+            android:id="@+id/action_dashboardFragment_to_detailCategoryFragment"
+            app:destination="@id/detailCategoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/calendarFragment"
@@ -51,7 +56,11 @@
         android:id="@+id/allTaskFragment"
         android:name="com.example.todoapplication.ui.AllTaskFragment"
         android:label="fragment_all_task"
-        tools:layout="@layout/fragment_all_task" />
+        tools:layout="@layout/fragment_all_task" >
+        <action
+            android:id="@+id/action_allTaskFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.example.todoapplication.ui.SettingFragment"
@@ -65,5 +74,17 @@
         <action
             android:id="@+id/action_chooseCategoryFragment_to_addFragment"
             app:destination="@id/addFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailCategoryFragment"
+        android:name="com.example.todoapplication.ui.category.DetailCategoryFragment"
+        android:label="fragment_detail_category"
+        tools:layout="@layout/fragment_detail_category">
+        <argument
+            android:name="category_id"
+            app:argType="integer"/>
+        <action
+            android:id="@+id/action_detailCategoryFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
 </navigation>

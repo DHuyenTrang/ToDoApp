@@ -24,4 +24,12 @@ class TaskRepository(context: Context) {
     suspend fun updateTask(task: Task) = taskDAO.updateTask(task)
 
     fun getAllTaskByUser(userId: Int): LiveData<List<Task>> = taskDAO.getAllTaskByUser(userId)
+
+    fun getAllTaskByCategory(categoryId: Int): LiveData<List<Task>> = taskDAO.getAllTaskByCategory(categoryId)
+
+    fun getAllTaskByStatus(status: String, userId: Int): LiveData<List<Task>> = taskDAO.getAllTaskByStatus(status, userId)
+
+    fun getTaskById(idTask: Int): LiveData<Task> = taskDAO.getTaskById(idTask)
+
+    fun getTaskCategory(idTask: Int): LiveData<Int> = taskDAO.getTaskCategory(idTask)
 }

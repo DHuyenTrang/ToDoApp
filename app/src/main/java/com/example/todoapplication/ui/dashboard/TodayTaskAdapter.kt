@@ -1,8 +1,10 @@
 package com.example.todoapplication.ui.dashboard
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.collection.emptyLongSet
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -30,14 +32,19 @@ class TodayTaskAdapter():
     inner class TodayTaskViewHolder(private val binding: ItemTodayTaskBinding): ViewHolder(binding.root) {
         @SuppressLint("ResourceAsColor")
         fun bind(task: Task) {
-            val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+            val timeFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
             val getTime = timeFormat.format(task.due_date)
 
             binding.time.text = getTime
             binding.title.text = task.title
-            if(binding.isDone.isChecked) {
-                task.status = "Completed"
-                binding.time.setTextColor(R.color.blue)
+            binding.isDone.setOnCheckedChangeListener { _, checked ->
+                if(checked){
+                    task.status = "Completed"
+                    binding.time.setTextColor(Color.parseColor("#2196F3"))
+                }
+                else{
+                    binding.time.setTextColor(Color.parseColor("#6b6e71"))
+                }
             }
         }
     }
