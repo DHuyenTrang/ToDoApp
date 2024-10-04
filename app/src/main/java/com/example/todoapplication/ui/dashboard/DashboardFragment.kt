@@ -13,7 +13,7 @@ import com.example.todoapplication.Constant
 import com.example.todoapplication.R
 import com.example.todoapplication.databinding.FragmentDashboardBinding
 import com.example.todoapplication.model.Task
-import com.example.todoapplication.ui.add.CategoryViewModel
+import com.example.todoapplication.viewmodel.CategoryViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -43,6 +43,8 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        updateStatusTask()
+
         // bottom menu
         bottomNavigationView = binding.bottomMenu
         bottomNavigationView.selectedItemId = R.id.button_home
@@ -54,6 +56,17 @@ class DashboardFragment : Fragment() {
         //println(Constant.user_id)
         setAdapterTaskView()
         setAdapterCategory()
+    }
+
+    private fun updateStatusTask() {
+        taskViewModel.getAllTaskByUser(Constant.user_id).observe(viewLifecycleOwner, Observer {
+                data -> val tasks = data ?: emptyList()
+            for(task: Task in tasks) {
+                if(task.due_date < Calendar.getInstance().time){
+                    taskViewModel.updateTaskOverdue(task)
+                }
+            }
+        })
     }
 
     private fun setAdapterCategory() {
@@ -69,7 +82,9 @@ class DashboardFragment : Fragment() {
     }
 
     private val onClick: (Int) -> Unit = {
-
+        id ->
+            val action = DashboardFragmentDirections.actionDashboardFragmentToDetailCategoryFragment(id)
+        findNavController().navigate(action)
     }
 
     private fun setAdapterTaskView() {
@@ -89,19 +104,12 @@ class DashboardFragment : Fragment() {
                 val tasks = data ?: emptyList()
                 val toDay: Date = Calendar.getInstance().time
                 val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                println(dateFormat.format(toDay))
-
                 for (task: Task in tasks) {
-                    //println(task.id)
-                    println(dateFormat.format(task.due_date))
                     if (dateFormat.format(task.due_date) == dateFormat.format(toDay)) {
-                        println("1")
                         todayTasks.add(task)
-//                        println(task.id)
                     }
                 }
             })
-        println(todayTasks)
         return todayTasks
     }
 

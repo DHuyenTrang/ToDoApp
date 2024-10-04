@@ -1,4 +1,4 @@
-package com.example.todoapplication.ui.add
+package com.example.todoapplication.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -20,6 +20,11 @@ class CategoryViewModel(context: Context): ViewModel() {
     fun getAllCategory(): LiveData<List<Category>> = categoryRepository.getAllCategory()
 
     fun getCategoryById(id: Int): LiveData<Category> = categoryRepository.getCategoryById(id)
+
+    fun updateCategory(category: Category, name: String) = viewModelScope.launch {
+        category.name = name
+        categoryRepository.updateCategory(category)
+    }
 
     class CategoryViewModelFactory(private val context: Context): ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {

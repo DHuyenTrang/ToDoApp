@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".DetailCategoryFragment">
+    tools:context=".ui.category.DetailCategoryFragment">
 
     <Button
         android:id="@+id/back_button"
@@ -56,8 +56,9 @@
         app:layout_constraintTop_toBottomOf="@id/back_button"
         android:layout_marginHorizontal="20dp"
         android:background="@drawable/bg_button_category"
-        android:paddingHorizontal="15dp"
-        android:paddingVertical="5dp"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
         android:layout_marginVertical="10dp"
         />
     <TextView

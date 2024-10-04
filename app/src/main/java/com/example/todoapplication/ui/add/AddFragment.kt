@@ -15,12 +15,11 @@ import androidx.navigation.fragment.findNavController
 import com.example.todoapplication.Constant
 import com.example.todoapplication.R
 import com.example.todoapplication.databinding.FragmentAddBinding
+import com.example.todoapplication.viewmodel.AddFragmentViewModel
+import com.example.todoapplication.viewmodel.CategoryViewModel
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
-import java.util.Locale
-import java.util.Timer
-import kotlin.time.Duration.Companion.hours
 
 class AddFragment : Fragment() {
     private var _binding: FragmentAddBinding? = null

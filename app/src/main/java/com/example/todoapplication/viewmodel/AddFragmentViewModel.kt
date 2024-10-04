@@ -1,13 +1,11 @@
-package com.example.todoapplication.ui.add
+package com.example.todoapplication.viewmodel
 
-import android.content.ClipDescription
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.todoapplication.database.tasks.TaskRepository
 import com.example.todoapplication.model.Task
-import com.example.todoapplication.ui.add.CategoryViewModel
 import kotlinx.coroutines.launch
 import java.util.Date
 
