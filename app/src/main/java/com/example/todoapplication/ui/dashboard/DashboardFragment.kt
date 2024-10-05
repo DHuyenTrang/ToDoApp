@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todoapplication.Constant
 import com.example.todoapplication.R
 import com.example.todoapplication.databinding.FragmentDashboardBinding
+import com.example.todoapplication.login.UserViewModel
 import com.example.todoapplication.model.Task
 import com.example.todoapplication.viewmodel.CategoryViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -30,7 +31,9 @@ class DashboardFragment : Fragment() {
     private val categoryViewModel: CategoryViewModel by viewModels() {
         CategoryViewModel.CategoryViewModelFactory(requireContext())
     }
-
+    private val userViewModel: UserViewModel by viewModels {
+        UserViewModel.UserViewModelFactory(requireContext())
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,9 +56,13 @@ class DashboardFragment : Fragment() {
         binding.addTaskButton.setOnClickListener {
             findNavController().navigate(R.id.addFragment)
         }
+        userViewModel.getUser(Constant.user_id).observe(viewLifecycleOwner, Observer {
+            binding.nameUser.text = "Hello ${it.username},"
+        })
         //println(Constant.user_id)
         setAdapterTaskView()
         setAdapterCategory()
+
     }
 
     private fun updateStatusTask() {
