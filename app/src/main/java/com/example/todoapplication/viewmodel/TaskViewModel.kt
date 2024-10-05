@@ -16,6 +16,16 @@ class TaskViewModel(context: Context): ViewModel() {
         taskRepository.deleteTask(task)
     }
 
+    fun updateTaskTodo(task: Task) = viewModelScope.launch {
+        task.status = "To Do"
+        taskRepository.updateTask(task)
+    }
+
+    fun updateTaskCompleted(task: Task) = viewModelScope.launch {
+        task.status = "Completed"
+        taskRepository.updateTask(task)
+    }
+
     fun getAllTaskByCategory(idCategory: Int): LiveData<List<Task>> = taskRepository.getAllTaskByCategory(idCategory)
 
     fun getAllTaskByUser(idUser: Int): LiveData<List<Task>> = taskRepository.getAllTaskByUser(idUser)

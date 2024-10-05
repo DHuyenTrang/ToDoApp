@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.todoapplication.database.tasks.TaskRepository
 import com.example.todoapplication.model.Task
 import kotlinx.coroutines.launch
+import java.util.Date
 
 class DashboardViewModel(context: Context): ViewModel() {
     private  val taskRepository: TaskRepository = TaskRepository(context)
@@ -16,6 +17,16 @@ class DashboardViewModel(context: Context): ViewModel() {
 
     fun updateTaskOverdue(task: Task) = viewModelScope.launch {
         task.status = "Overdue"
+        taskRepository.updateTask(task)
+    }
+
+    fun updateTaskTodo(task: Task) = viewModelScope.launch {
+        task.status = "To Do"
+        taskRepository.updateTask(task)
+    }
+
+    fun updateTaskCompleted(task: Task) = viewModelScope.launch {
+        task.status = "Completed"
         taskRepository.updateTask(task)
     }
 

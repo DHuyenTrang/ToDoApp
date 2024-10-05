@@ -1,4 +1,4 @@
-package com.example.todoapplication.ui
+package com.example.todoapplication.ui.task
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,7 +13,6 @@ import com.example.todoapplication.Constant
 import com.example.todoapplication.R
 import com.example.todoapplication.databinding.FragmentAllTaskBinding
 import com.example.todoapplication.adapter.TaskAdapter
-import com.example.todoapplication.model.Task
 import com.example.todoapplication.viewmodel.TaskViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -47,7 +46,7 @@ class AllTaskFragment : Fragment() {
 
     private fun setAdapterOverdue() {
         val recyclerView = binding.overdueItems
-        val adapter = TaskAdapter(onClick)
+        val adapter = TaskAdapter(onClick, taskViewModel)
         taskViewModel.getAllTaskByUserStatus("Overdue", Constant.user_id)
             .observe(viewLifecycleOwner, Observer {
                 val tasks = it ?: emptyList()
@@ -59,7 +58,7 @@ class AllTaskFragment : Fragment() {
 
     private fun setAdapterTodo() {
         val recyclerView = binding.todoItems
-        val adapter = TaskAdapter(onClick)
+        val adapter = TaskAdapter(onClick, taskViewModel)
         taskViewModel.getAllTaskByUserStatus("To Do", Constant.user_id)
             .observe(viewLifecycleOwner, Observer {
                 val tasks = it ?: emptyList()

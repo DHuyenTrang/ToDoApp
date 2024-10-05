@@ -7,6 +7,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.example.todoapplication.model.Task
+import java.util.Date
 
 @Dao
 interface TaskDAO {
@@ -36,4 +37,7 @@ interface TaskDAO {
 
     @Query("SELECT category_id FROM tasks WHERE id = :idTask")
     fun getTaskCategory(idTask: Int): LiveData<Int>
+
+    @Query("SELECT * FROM tasks WHERE due_date =:date")
+    fun getTaskByDate(date: Date): LiveData<List<Task>>
 }

@@ -11,13 +11,15 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.todoapplication.R
 import com.example.todoapplication.databinding.ItemTodayTaskBinding
 import com.example.todoapplication.model.Task
+import com.example.todoapplication.viewmodel.TaskViewModel
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class TodayTaskAdapter():
+class TodayTaskAdapter(val taskViewModel: DashboardViewModel) :
     ListAdapter<Task, TodayTaskAdapter.TodayTaskViewHolder>(TodayTaskDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodayTaskViewHolder {
-        val binding = ItemTodayTaskBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemTodayTaskBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TodayTaskViewHolder(binding)
     }
 
@@ -29,7 +31,8 @@ class TodayTaskAdapter():
         submitList(tasks)
     }
 
-    inner class TodayTaskViewHolder(private val binding: ItemTodayTaskBinding): ViewHolder(binding.root) {
+    inner class TodayTaskViewHolder(private val binding: ItemTodayTaskBinding) :
+        ViewHolder(binding.root) {
         @SuppressLint("ResourceAsColor")
         fun bind(task: Task) {
             val timeFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
@@ -37,19 +40,20 @@ class TodayTaskAdapter():
 
             binding.time.text = getTime
             binding.title.text = task.title
+            if(task.status == "Completed") binding.isDone.isChecked = true
             binding.isDone.setOnCheckedChangeListener { _, checked ->
-                if(checked){
-                    task.status = "Completed"
+                if (checked) {
                     binding.time.setTextColor(Color.parseColor("#2196F3"))
-                }
-                else{
+                    taskViewModel.updateTaskCompleted(task)
+                } else {
                     binding.time.setTextColor(Color.parseColor("#6b6e71"))
+                    taskViewModel.updateTaskTodo(task)
                 }
             }
         }
     }
 
-    class TodayTaskDiffCallback: DiffUtil.ItemCallback<Task>() {
+    class TodayTaskDiffCallback : DiffUtil.ItemCallback<Task>() {
         override fun areItemsTheSame(oldItem: Task, newItem: Task): Boolean {
             return oldItem.id == newItem.id
         }
