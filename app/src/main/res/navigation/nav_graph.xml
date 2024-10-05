@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.todoapplication.ui.DetailFragment"
+        android:name="com.example.todoapplication.ui.task.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail">
         <argument
@@ -49,12 +49,16 @@
     </fragment>
     <fragment
         android:id="@+id/calendarFragment"
-        android:name="com.example.todoapplication.ui.CalendarFragment"
+        android:name="com.example.todoapplication.ui.calendar.CalendarFragment"
         android:label="fragment_calendar"
-        tools:layout="@layout/fragment_calendar" />
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_calendarFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/allTaskFragment"
-        android:name="com.example.todoapplication.ui.AllTaskFragment"
+        android:name="com.example.todoapplication.ui.task.AllTaskFragment"
         android:label="fragment_all_task"
         tools:layout="@layout/fragment_all_task" >
         <action

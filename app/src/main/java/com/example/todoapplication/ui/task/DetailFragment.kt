@@ -1,4 +1,4 @@
-package com.example.todoapplication.ui
+package com.example.todoapplication.ui.task
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -15,15 +15,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.todoapplication.Constant
 import com.example.todoapplication.R
-import com.example.todoapplication.databinding.FragmentAllTaskBinding
 import com.example.todoapplication.databinding.FragmentDetailBinding
 import com.example.todoapplication.viewmodel.CategoryViewModel
 import com.example.todoapplication.viewmodel.TaskViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
-import kotlin.coroutines.Continuation
 
 class DetailFragment : Fragment() {
     private var _binding: FragmentDetailBinding? = null
@@ -32,7 +29,7 @@ class DetailFragment : Fragment() {
     private val calendar = Calendar.getInstance()
     private var date = Date()
 
-    val args: DetailFragmentArgs by navArgs()
+    val args: com.example.todoapplication.ui.DetailFragmentArgs by navArgs()
     private val taskViewModel: TaskViewModel by viewModels {
         TaskViewModel.TaskViewModelFactory(requireContext())
     }

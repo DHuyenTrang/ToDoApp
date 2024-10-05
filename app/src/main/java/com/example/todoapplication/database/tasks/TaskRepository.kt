@@ -32,4 +32,6 @@ class TaskRepository(context: Context) {
     fun getTaskById(idTask: Int): LiveData<Task> = taskDAO.getTaskById(idTask)
 
     fun getTaskCategory(idTask: Int): LiveData<Int> = taskDAO.getTaskCategory(idTask)
+
+    fun getTaskByDate(date: Date): LiveData<List<Task>> = taskDAO.getTaskByDate(date)
 }

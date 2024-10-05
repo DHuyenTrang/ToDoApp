@@ -8,10 +8,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.todoapplication.databinding.ItemTaskBinding
 import com.example.todoapplication.model.Task
+import com.example.todoapplication.viewmodel.TaskViewModel
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class TaskAdapter(private val onClick: (Int) -> Unit)
+class TaskAdapter(private val onClick: (Int) -> Unit, val taskViewModel: TaskViewModel)
     : ListAdapter<Task, TaskAdapter.TaskViewHolder>(TaskDiffCallBack()) {
 
     inner class TaskViewHolder(private val binding: ItemTaskBinding): ViewHolder(binding.root) {
@@ -27,6 +28,16 @@ class TaskAdapter(private val onClick: (Int) -> Unit)
             }
             binding.taskItem.setOnClickListener {
                 onClick(task.id)
+            }
+            if(task.status == "Completed") binding.isDone.isChecked = true
+            binding.isDone.setOnCheckedChangeListener { _, checked ->
+                if (checked) {
+                    binding.time.setTextColor(Color.parseColor("#2196F3"))
+                    taskViewModel.updateTaskCompleted(task)
+                } else {
+                    binding.time.setTextColor(Color.parseColor("#6b6e71"))
+                    taskViewModel.updateTaskTodo(task)
+                }
             }
         }
     }

@@ -62,7 +62,7 @@ class DashboardFragment : Fragment() {
         taskViewModel.getAllTaskByUser(Constant.user_id).observe(viewLifecycleOwner, Observer {
                 data -> val tasks = data ?: emptyList()
             for(task: Task in tasks) {
-                if(task.due_date < Calendar.getInstance().time){
+                if(task.due_date < Calendar.getInstance().time && task.status != "Completed"){
                     taskViewModel.updateTaskOverdue(task)
                 }
             }
@@ -88,7 +88,7 @@ class DashboardFragment : Fragment() {
     }
 
     private fun setAdapterTaskView() {
-        val taskAdapter = TodayTaskAdapter()
+        val taskAdapter = TodayTaskAdapter(taskViewModel)
         taskAdapter.setTasks(getTodayTask())
         val taskView = binding.listTask
         taskView.adapter = taskAdapter

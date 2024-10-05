@@ -58,7 +58,7 @@ class DetailCategoryFragment : Fragment() {
     }
 
     private fun setTaskAdapter() {
-        val adapter = TaskAdapter(onClick)
+        val adapter = TaskAdapter(onClick, taskViewModel)
         val recyclerView = binding.listTask
         taskViewModel.getAllTaskByCategory(args.categoryId).observe(viewLifecycleOwner, Observer {
             adapter.setTasks(it)
