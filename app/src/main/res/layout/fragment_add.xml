@@ -86,8 +86,8 @@
         android:fontFamily="@font/font"
         android:paddingHorizontal="20dp"
         android:text="   Set due date"
-        android:textColor="#6b6e71"
         android:textAlignment="viewStart"
+        android:textColor="#6b6e71"
         android:textSize="17sp"
         app:layout_constraintTop_toBottomOf="@id/date" />
 
@@ -103,8 +103,8 @@
         android:fontFamily="@font/font"
         android:paddingHorizontal="20dp"
         android:text="   Set Time"
-        android:textColor="#6b6e71"
         android:textAlignment="viewStart"
+        android:textColor="#6b6e71"
         android:textSize="17sp"
         app:layout_constraintTop_toBottomOf="@id/date_input" />
 
@@ -127,6 +127,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/bg_text_view"
+        android:fontFamily="@font/font"
         android:gravity="top"
         android:hint="Description"
         android:padding="10dp"

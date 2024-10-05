@@ -20,7 +20,7 @@ interface TaskDAO {
     @Update
     suspend fun updateTask(task: Task)
 
-    @Query("SELECT * FROM tasks WHERE user_id = :userId")
+    @Query("SELECT * FROM tasks WHERE user_id = :userId ORDER BY due_date ASC")
     fun getAllTaskByUser(userId: Int): LiveData<List<Task>>
 
     @Query("SELECT * FROM tasks WHERE category_id =:categoryId ORDER BY due_date ASC")
