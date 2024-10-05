@@ -1,6 +1,7 @@
 package com.example.todoapplication.login
 
 import android.content.Context
+import androidx.collection.intSetOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -18,6 +19,13 @@ class UserViewModel(context: Context): ViewModel(){
         val user = User(username, password, email)
         userRepository.insertUser(user)
     }
+
+    fun updateUser(user: User, newName: String) = viewModelScope.launch {
+        user.username = newName
+        userRepository.updateUser(user)
+    }
+
+    fun getUser(idUser: Int): LiveData<User> = userRepository.getUserById(idUser)
 
     fun getAllUser(): LiveData<List<User>> = userRepository.getAllUser()
 

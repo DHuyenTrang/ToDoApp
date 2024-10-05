@@ -29,7 +29,7 @@ class DetailFragment : Fragment() {
     private val calendar = Calendar.getInstance()
     private var date = Date()
 
-    val args: com.example.todoapplication.ui.DetailFragmentArgs by navArgs()
+    val args: DetailFragmentArgs by navArgs()
     private val taskViewModel: TaskViewModel by viewModels {
         TaskViewModel.TaskViewModelFactory(requireContext())
     }

@@ -20,4 +20,6 @@ class UserRepository(context: Context) {
     suspend fun updateUser(user: User) = userDAO.updateUser(user)
 
     fun getAllUser(): LiveData<List<User>> = userDAO.getAllUser()
+
+    fun getUserById(idUser: Int): LiveData<User> = userDAO.getUserById(idUser)
 }
